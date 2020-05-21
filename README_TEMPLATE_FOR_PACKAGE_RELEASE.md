@@ -23,7 +23,7 @@ OSX      | ![OSX Build Status](https://travis-ci.com/roboholix/component-browser
 Windows  | ![Windows Build status](https://ci.appveyor.com/api/projects/status/484jp2fhlpxmrjoi?svg=true)
 
 ## Documentation (Live Demo)
-See a [live demo](https://roboholix.github.io/component-browser/) of the components and their respective documentation used at [Roboholix.com](https://roboholix.com).
+See a [live demo](https://roboholix.github.io/component-browser/) of the components and their respective documentation.
 
 The demo component browser includes:
 - Rendered example components that are included in this library
