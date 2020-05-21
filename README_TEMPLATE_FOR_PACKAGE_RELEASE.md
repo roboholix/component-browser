@@ -4,14 +4,11 @@
   <img src="https://img.shields.io/david/roboholix/component-browser?style=for-the-badge" />
   <img src="https://img.shields.io/github/issues/roboholix/component-browser?style=for-the-badge" />
   <img alt="Maintenance" src="https://img.shields.io/maintenance/yes/2020?style=for-the-badge" />
-  <img alt="npm bundle size (scoped)" src="https://img.shields.io/bundlephobia/min/@roboholix/component-browser?style=for-the-badge">
   <img src="https://img.shields.io/node/v/@roboholix/component-browser?style=for-the-badge" />
   <img src="https://img.shields.io/snyk/vulnerabilities/github/roboholix/component-browser?style=for-the-badge" />    
 </p>
 
 ---
-
-![GitHub issues](https://img.shields.io/github/issues/roboholix/component-browser) ![maintained](https://img.shields.io/maintenance/yes/2020) ![npm bundle size](https://img.shields.io/bundlephobia/min/@roboholix/component-browser) ![node-current](https://img.shields.io/node/v/@roboholix/component-browser) ![vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/roboholix/component-browser)
 
 A set of React components
 
