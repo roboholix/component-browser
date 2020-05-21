@@ -12,7 +12,6 @@
 
 A set of React components
 
-
 Platform | CI Status
 ---------|:---------
 Linux    | ![Linux Build Status](https://travis-ci.com/roboholix/component-browser.svg?env=BADGE=linux&label=build&branch=master)
