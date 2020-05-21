@@ -1,21 +1,17 @@
 {
-  "name": "@roboholix/component-browser-build-template",
-  "version": "0.5.1",
+  "name": "@roboholix/component-browser",
+  "version": "0.0.1",
   "main": "./lib/index.js",
   "private": true,
-  "description": "Roboholix.com Shared Components",
+  "description": "Component Browser",
   "engines": {
     "node": ">=10.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/roboholix/component-browser.git"
+    "url": "git+https://github.com/roboholix/component-browser.git"
   },
-  "author": {
-    "name": "Roboholix",
-    "email": "luke@roboholix.com",
-    "url": "https://roboholix.com"
-  },
+  "author": "Roboholix <luke@roboholix.com> (https://roboholix.com)",
   "files": [
     "lib"
   ],
@@ -268,5 +264,9 @@
         ]
       }
     }
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
   }
 }
