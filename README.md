@@ -30,6 +30,8 @@ The demo component browser includes:
 - Code snippets used to generate the example components
 - Component prop options, including default values and requirements
 
+[![](images/component-browser.jpg)](https://roboholix.github.io/component-browser/)
+
 ## Table of Contents
  * [Pre-requisites](#pre-requisites)
  * [Installation](#installation)
