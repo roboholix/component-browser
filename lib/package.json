@@ -1,12 +1,8 @@
 {
   "name": "@roboholix/component-browser",
-  "author": {
-    "name": "Roboholix",
-    "email": "luke@roboholix.com",
-    "url": "https://roboholix.com"
-  },
-  "version": "0.5.1",
-  "description": "Roboholix.com Shared Components",
+  "author": "Roboholix <luke@roboholix.com> (https://roboholix.com)",
+  "version": "0.0.1",
+  "description": "Component Browser",
   "main": "./index.js",
   "keywords": [
     "roboholix",
@@ -24,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/roboholix/component-browser.git"
+    "url": "git+https://github.com/roboholix/component-browser.git"
   },
   "license": "UNLICENSED",
   "bugs": {
