@@ -1,7 +1,7 @@
 {
   "name": "@roboholix/component-browser",
   "author": "Roboholix <luke@roboholix.com> (https://roboholix.com)",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Component Browser",
   "main": "./index.js",
   "keywords": [
