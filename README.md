@@ -20,7 +20,7 @@ Platform | CI Status
 ---------|:---------
 Linux    | ![Linux Build Status](https://travis-ci.com/roboholix/component-browser.svg?env=BADGE=linux&label=build&branch=master)
 OSX      | ![OSX Build Status](https://travis-ci.com/roboholix/component-browser.svg?env=BADGE=osx&label=build&branch=master)
-Windows  | ![Windows Build status](https://ci.appveyor.com/api/projects/status/484jp2fhlpxmrjoi?svg=true)
+Windows  | ![Windows Build status](https://ci.appveyor.com/api/projects/status/oetcg679y9o4xc7u?svg=true)
 
 ## Quick-start Demo (with example code)
 See a [live demo](https://roboholix.github.io/component-browser/) of the components
