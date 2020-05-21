@@ -1,0 +1,278 @@
+@use 'common/styles/fluidType' as fluidType;
+@use 'common/styles/fluidTablePadding' as fluidTablePadding;
+
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&family=Open+Sans&family=Roboto&family=Share+Tech+Mono&display=swap');
+
+$min_width: 320px;
+$max_width: 1080px;
+$min_font: 12px;
+$max_font: 16px;
+$min_table_padding: 8px;
+$max_table_padding: 10px;
+
+$min_nav_font: 14px;
+$max_nav_font: 16px;
+
+/* Global styles */
+* {
+  margin: 0;
+}
+
+::selection {
+  background: #86b2e0;
+}
+
+html {
+  // Use fluidType mixin where possible instead of rem's
+  font-size: 62.5%; // 10px if user has not adjusted default font sizes
+}
+
+html, body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  @include fluidType.fluid-font-size($min_width, $max_width, $min_font, $max_font);
+  background-color: #fff;
+  background: linear-gradient(#f4f8ff, black);
+  color: #0e0e0e;
+  flex-shrink: 0;
+  font-family: 'Roboto', sans-serif;
+  min-height: auto;
+}
+
+h1, h2 {
+  color: #4a4a4a;
+  padding: 16px 0;
+}
+
+h3, h4, h5, h6, h7 {
+  color: #4e6d88;
+  font-family: "Roboto", "Open Sans", monospace;
+  padding: 20px 0;
+}
+
+h3 {
+  color: #4a4a4a;
+}
+
+h4 {
+  font-family: "Open Sans", monospace;
+  padding: 0 0 20px 0;
+}
+
+h4, h5, h6, h7 {
+  color: #214f77;
+}
+
+a, a:visited {
+  color: #ccc;
+  display: inline-block;
+  font-family: "Roboto",sans-serif;
+  padding: 2px 10px;
+  text-decoration: none;
+  width: calc(100% - 20px);
+}
+
+a:hover,
+a.isActive {
+  color: #78c9f9;
+}
+
+button.example__link {
+  background-color: transparent;
+  border: none;
+  color: #888;
+  display: inline-block;
+  font-family: "Share Tech Mono", monospace;
+  font-size: inherit;
+}
+
+button.example__link:hover {
+  cursor: pointer;
+}
+
+button.example__link:focus {
+  outline: none;
+}
+
+header {
+  font-family: 'Roboto', sans-serif;
+}
+
+li {
+  font-weight: normal;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  margin-block-start: 16px;
+  margin-top: 16px;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+.clear {
+  clear: both;
+}
+
+td {
+  border-top: solid 1px #fff;
+  color: #3a3a3a;
+}
+
+td, th {
+  padding: 10px;
+}
+
+th {
+  color: #214f77;
+}
+
+table {
+  background: #e8e8e8;
+  border-collapse: collapse;
+  font-family: "Roboto", "Open Sans", "Share Tech Mono", monospace;
+}
+
+/* Documentation site component styles */
+#app {
+  height: 100%;
+}
+
+.description {
+  color: #555;
+  font-family: Open Sans, "Share Tech Mono", monospace;
+}
+
+.docs {
+  align-items: normal;
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+}
+
+.example {
+  background-color: #dcdcdc;
+  border: 2px solid #ddd;
+  height: auto;
+  margin: 0 0 20px 0;
+  padding: 30px;
+  width: auto;
+}
+
+.example h4:first-of-type {
+  margin-top: 0;
+}
+
+.example__link {
+  padding: 0;
+  width: auto;
+}
+
+.example__link:hover {
+  text-decoration: none;
+  background-color: transparent;
+  color: #5981ab;
+}
+
+.example p:last-of-type {
+  margin-bottom: 0;
+}
+
+.props tr th {
+  background-color: #111;
+  color: #78c9f9;
+  padding: 10px 16px;
+}
+
+.props tr td:last-of-type {
+  text-align: center;
+}
+
+.props th, td {
+  padding: 10px 16px;
+  text-align: left;
+}
+
+.props__name {
+  color: #005898;
+}
+
+.props__default-value {
+  text-align: center;
+}
+
+.props__default-value--no-value {
+  color: #555;
+}
+
+.props__is-required {
+  color: #0c960c;
+  font-family: 'Balsamiq Sans', cursive;
+}
+
+.props__is-not-required {
+  color: #b70000;
+  font-family: 'Balsamiq Sans', cursive;
+}
+
+.props__table-row--is-odd,
+.props__table-row--is-odd td {
+  background-color: #e0e0e0;
+}
+
+.navigation__container {
+  @include fluidType.fluid-font-size($min_width, $max_width, $min_nav_font, $max_nav_font);
+  background: linear-gradient(180deg, #000, #333);
+  height: auto;
+  min-height: 100%;
+}
+
+.navigation {
+  height: 100%;
+  list-style-type: none;
+  min-height: 200vh;
+  padding: 30px 20px;
+}
+
+.componentpage {
+  flex-grow: 1;
+  padding: 20px 40px 20px 60px;
+}
+
+.componentpage__header {
+  background-color: #fff;
+  text-align: center;
+}
+
+.app__header {
+  color: #333;
+  font-family: Open Sans, "Share Tech Mono", monospace;
+}
+
+.vertical-align {
+  animation: 3s ease-in 0s normal forwards 1 fadein;
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+  transition: top .75s;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: none;
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "@roboholix/component-browser",
+  "author": {
+    "name": "Roboholix",
+    "email": "luke@roboholix.com",
+    "url": "https://roboholix.com"
+  },
+  "version": "0.5.1",
+  "description": "Roboholix.com Shared Components",
+  "main": "./index.js",
+  "keywords": [
+    "roboholix",
+    "react",
+    "react-component",
+    "resize",
+    "scale",
+    "aspect ratio",
+    "game",
+    "arcade",
+    "video"
+  ],
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roboholix/component-browser.git"
+  },
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/roboholix/component-browser/issues"
+  },
+  "homepage": "https://roboholix.github.io/component-browser/",
+  "dependencies": {
+    "fontfaceobserver": "2.1.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-redux": "7.2.0"
+  }
+}

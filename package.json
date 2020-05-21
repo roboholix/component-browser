@@ -1,0 +1,272 @@
+{
+  "name": "@roboholix/component-browser-build-template",
+  "version": "0.5.1",
+  "main": "./lib/index.js",
+  "private": true,
+  "description": "Roboholix.com Shared Components",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roboholix/component-browser.git"
+  },
+  "author": {
+    "name": "Roboholix",
+    "email": "luke@roboholix.com",
+    "url": "https://roboholix.com"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "roboholix",
+    "react",
+    "react-component",
+    "resize",
+    "scale",
+    "aspect ratio",
+    "game",
+    "arcade",
+    "video"
+  ],
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/roboholix/component-browser/issues"
+  },
+  "homepage": "https://roboholix.github.io/component-browser/",
+  "scripts": {
+    "analyze-bundle": "babel-node ./scripts/analyzeBundle.js",
+    "build": "webpack --config webpack.prod.js",
+    "build:all": "npm-run-all --parallel build:docs build:lib build:images",
+    "build:docs": "npm-run-all --parallel gen:docs build",
+    "build:css": "sass ./src/components:./src/components && sass ./src/common/styles:./src/common/styles",
+    "build:commonjs": "cross-env NODE_ENV=production babel ./src/components --out-dir ./lib --ignore \"*.spec.js\",\"*.snap\",\"*.test.js\"",
+    "build:copy-files": "node scripts/copyBuildFiles.js",
+    "build:images": "cpx \"./images/**/*.*\" ./lib/images",
+    "build:lib": "npm-run-all build:commonjs build:css build:copy-files",
+    "create-release-pr": "node ./scripts/createReleaseAndChangelogPR.js",
+    "cy:open": "CYPRESS_CRASH_REPORTS=0 NODE_ENV=test cypress open",
+    "cy:run": "cypress run --headless --browser chrome",
+    "deploy:docs": "gh-pages -d dist",
+    "gen:docs": "node scripts/generateComponentData.js",
+    "gen:docs-watch": "npm run gen:docs -- --watch",
+    "lint": "esw webpack.*.js src scripts --color",
+    "lint:watch": "npm run lint -- --watch",
+    "open:coverage": "open-cli coverage/lcov-report/index.html",
+    "postbuild:css": "cpx \"./src/components/**/*.css\" ./lib",
+    "poste2e": "npm run open:coverage",
+    "posttest": "node ./scripts/mergeCoverage.js",
+    "preanalyze-bundle": "npm run build",
+    "prebuild:lib": "rimraf lib",
+    "predeploy:docs": "npm-run-all build:docs remove:readme",
+    "prestart": "npm-run-all build:css build:docs",
+    "prestart:dev": "npm-run-all build:css build:docs",
+    "pretest": "npm-run-all build:css build:docs",
+    "remove:dist": "rimraf ./dist",
+    "remove:readme": "rimraf README.md",
+    "start": "npm-run-all --parallel lint:watch start:dev:open gen:docs-watch",
+    "start:dev": "webpack-dev-server --config webpack.dev.js",
+    "start:dev:test": "npm-run-all lint start:dev",
+    "start:dev:open": "npm run start:dev -- --host 0.0.0.0 --open --hot",
+    "start:test": "cross-env NODE_ENV=test npm run start:dev:test",
+    "test": "npm-run-all lint test:jest:coverage test:cy",
+    "test:cy": "start-test start:test 8080 cy:run",
+    "test:cy:open": "start-test start:test 8080 cy:open",
+    "test:open-coverage": "npm-run-all test open:coverage",
+    "test:jest": "cross-env NODE_ENV=test jest --env=jsdom",
+    "test:jest:coverage": "cross-env NODE_ENV=test jest --coverage --env=jsdom",
+    "test:watch": "cross-env NODE_ENV=test node scripts/test.js --env=jsdom"
+  },
+  "dependencies": {
+    "fontfaceobserver": "2.1.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-redux": "7.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/compat-data": "7.9.6",
+    "@babel/core": "7.9.6",
+    "@babel/node": "7.8.7",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-transform-runtime": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-react": "7.9.4",
+    "@cypress/code-coverage": "3.7.4",
+    "@cypress/webpack-preprocessor": "5.4.1",
+    "@hot-loader/react-dom": "16.13.0",
+    "autoprefixer": "9.8.0",
+    "babel-eslint": "10.1.0",
+    "babel-jest": "26.0.1",
+    "babel-loader": "8.1.0",
+    "babel-plugin-inline-import": "3.0.0",
+    "babel-plugin-istanbul": "6.0.0",
+    "babel-plugin-styled-components": "1.10.7",
+    "babel-plugin-transform-react-constant-elements": "6.23.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.24",
+    "chokidar": "3.4.0",
+    "clean-webpack-plugin": "3.0.0",
+    "copy-webpack-plugin": "6.0.1",
+    "cpx": "1.5.0",
+    "cross-env": "7.0.2",
+    "css-loader": "3.5.3",
+    "cypress": "4.6.0",
+    "dotenv": "8.2.0",
+    "dotenv-webpack": "1.8.0",
+    "enzyme": "3.11.0",
+    "enzyme-adapter-react-16": "1.15.2",
+    "eslint": "7.0.0",
+    "eslint-config-react-app": "5.2.1",
+    "eslint-plugin-flowtype": "5.1.0",
+    "eslint-plugin-import": "2.20.2",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-react": "7.20.0",
+    "eslint-plugin-react-hooks": "4.0.2",
+    "eslint-watch": "6.0.1",
+    "file-loader": "6.0.0",
+    "fs-extra": "9.0.0",
+    "gh-pages": "2.2.0",
+    "highlight.js": "10.0.3",
+    "html-webpack-plugin": "4.3.0",
+    "isomorphic-fetch": "2.2.1",
+    "istanbul-lib-coverage": "3.0.0",
+    "jest": "26.0.1",
+    "mini-css-extract-plugin": "0.9.0",
+    "mkdirp": "1.0.4",
+    "node-sass": "4.14.1",
+    "npm-run-all": "4.1.5",
+    "nyc": "15.0.1",
+    "object-assign": "4.1.1",
+    "open-cli": "6.0.1",
+    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-loader": "3.0.0",
+    "prettier": "2.0.5",
+    "react-addons-test-utils": "15.6.2",
+    "react-docgen": "5.3.0",
+    "react-hot-loader": "4.12.21",
+    "react-test-renderer": "16.13.1",
+    "rimraf": "3.0.2",
+    "sass": "1.26.5",
+    "sass-loader": "8.0.2",
+    "script-loader": "0.7.2",
+    "start-server-and-test": "1.11.0",
+    "style-loader": "1.2.1",
+    "url-loader": "4.1.0",
+    "webpack": "4.43.0",
+    "webpack-bundle-analyzer": "3.8.0",
+    "webpack-cli": "3.3.11",
+    "webpack-dev-server": "3.11.0",
+    "webpack-md5-hash": "0.0.6",
+    "webpack-merge": "4.2.2"
+  },
+  "browserslist": [
+    ">1%",
+    "last 4 versions",
+    "Firefox ESR",
+    "not ie < 9"
+  ],
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!**/*.spec.js",
+      "!**/*.spec.js.snap",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/__test__/**",
+      "!**/__snapshots__/**"
+    ],
+    "coverageDirectory": "jest-coverage",
+    "globals": {
+      "window": {}
+    },
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/config/setupTests.js"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.js?(x)",
+      "<rootDir>/src/**/*.spec.js"
+    ],
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      ".cypress.spec.js",
+      ".snap"
+    ],
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    }
+  },
+  "nyc": {
+    "report-dir": "cypress-coverage",
+    "exclude": [
+      "config/*",
+      "scripts/*"
+    ]
+  },
+  "babel": {
+    "env": {
+      "development": {
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "istanbul",
+          "react-hot-loader/babel",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-transform-runtime"
+        ]
+      },
+      "production": {
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "modules": "commonjs",
+              "debug": false
+            }
+          ],
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "react-hot-loader/babel",
+          "babel-plugin-styled-components",
+          "transform-react-constant-elements",
+          "transform-react-remove-prop-types",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-transform-runtime"
+        ]
+      },
+      "test": {
+        "presets": [
+          [
+            "@babel/preset-env",
+            {
+              "modules": "commonjs",
+              "debug": false
+            }
+          ],
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "react-hot-loader/babel",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-transform-runtime"
+        ]
+      }
+    }
+  }
+}

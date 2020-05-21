@@ -1,0 +1,40 @@
+matrix:
+  include:
+    - os: linux
+      node_js: "10"
+      env:
+        - BADGE=linux
+    - os: linux
+      node_js: "12"
+      env:
+        - BADGE=linux
+    - os: osx
+      node_js: "10"
+      sudo: required
+      env:
+        - BADGE=osx
+        - HOMEBREW_CASK_OPTS='--appdir=/Applications'
+    - os: osx
+      node_js: "12"
+      sudo: required
+      env:
+        - BADGE=osx
+        - HOMEBREW_CASK_OPTS='--appdir=/Applications'
+
+language: node_js
+
+branches:
+  only:
+    - master
+
+before_install:
+  - |
+    if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+      brew update > /dev/null
+      brew cask install google-chrome
+    fi
+
+# Upload the coverage reports to codecov.io to update code coverage badge
+# in README.md
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN -s coverage
